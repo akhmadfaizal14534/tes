@@ -7,9 +7,10 @@ import InteractiveDiagram from './InteractiveDiagram';
 interface Props {
   code: string;
   type: DiagramType;
+  onCodeChange?: (code: string) => void;
 }
 
-const DiagramPreview: React.FC<Props> = ({ code, type }) => {
+const DiagramPreview: React.FC<Props> = ({ code, type, onCodeChange }) => {
   const [svgContent, setSvgContent] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>('');
@@ -127,7 +128,7 @@ const DiagramPreview: React.FC<Props> = ({ code, type }) => {
             svgContent={svgContent}
             zoom={zoom}
             editMode={editMode}
-            onCodeChange={setCode}
+            onCodeChange={onCodeChange || (() => {})}
             originalCode={code}
           />
         )}

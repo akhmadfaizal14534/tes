@@ -130,6 +130,7 @@ const DiagramGenerator: React.FC = () => {
         <DiagramPreview
           code={code}
           type={selectedType}
+          onCodeChange={setCode}
         />
       </div>
     </div>
